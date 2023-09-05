@@ -2,6 +2,9 @@ import Footer from '@/components/Footer'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
+import ogImageSm from '@/images/og-image-sm.png'
+import ogImageLg from '@/images/ig-image-lg.png'
+import Image from 'next/image'
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -20,13 +23,13 @@ export const metadata: Metadata = {
     siteName: 'MICROURL',
     images: [
       {
-        url: '/og-image-sm.png',
+        url: 'https://microurl.pl/_next/image?url=%2Fog-image-sm.png&w=828&q=75',
         width: 800,
         height: 600,
         alt: 'Small OG image'
       },
       {
-        url: '/og-image-lg.png',
+        url: 'https://microurl.pl/_next/image?url=%2Fog-image-lg.png&w=1920&q=75',
         width: 1800,
         height: 1600,
         alt: 'Large OG image'

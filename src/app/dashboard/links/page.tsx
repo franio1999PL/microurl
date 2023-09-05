@@ -20,8 +20,9 @@ import {
 } from '@/components/ui/tooltip'
 
 import { PrismaClient } from '@prisma/client'
-import TableOld from '@/components/TableOld'
+
 import RemoveButton from '@/components/RemoveButton'
+import CopyUrl from '@/components/CopyUrl'
 const prisma = new PrismaClient()
 
 export default async function page () {
@@ -63,32 +64,10 @@ export default async function page () {
                   <TableRow key={link.id}>
                     <TableCell className='font-medium'>{index + 1}</TableCell>
                     <TableCell>
-                      <a href={link.longUrl} target='_blank'>
-                        <TooltipProvider>
-                          <Tooltip>
-                            <TooltipTrigger>Kliknij lub najedź</TooltipTrigger>
-                            <TooltipContent>
-                              <p>{link.longUrl}</p>
-                            </TooltipContent>
-                          </Tooltip>
-                        </TooltipProvider>
-                      </a>
+                      <CopyUrl url={link.longUrl} />
                     </TableCell>
                     <TableCell>
-                      <a
-                        href={`${process.env.MAIN_URL}/${link.slug}`}
-                        target='_blank'
-                        placeholder={`${process.env.MAIN_URL}/${link.slug}`}
-                      >
-                        <TooltipProvider>
-                          <Tooltip>
-                            <TooltipTrigger>Kliknij lub najedź</TooltipTrigger>
-                            <TooltipContent>
-                              <p>{`${process.env.MAIN_URL}/${link.slug}`}</p>
-                            </TooltipContent>
-                          </Tooltip>
-                        </TooltipProvider>
-                      </a>
+                      <CopyUrl url={`${process.env.MAIN_URL}/${link.slug}`} />
                     </TableCell>
                     <TableCell>{link.clicks}</TableCell>
                     <TableCell className='text-right'>

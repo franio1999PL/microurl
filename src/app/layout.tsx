@@ -18,6 +18,20 @@ export const metadata: Metadata = {
       'Możliwość, analizowania ruchu na twoich social mediach oraz tworzenie skróconych url.',
     url: String(process.env.MAIN_URL),
     siteName: 'MICROURL',
+    images: [
+      {
+        url: '/og-image-sm.png',
+        width: 800,
+        height: 600,
+        alt: 'Small OG image'
+      },
+      {
+        url: '/og-image-lg.png',
+        width: 1800,
+        height: 1600,
+        alt: 'Large OG image'
+      }
+    ],
     locale: 'pl_PL',
     type: 'website'
   }

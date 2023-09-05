@@ -9,7 +9,7 @@ export default function Footer () {
           className='hover:opacity-80 hover:underline transition-all duration-100'
         >
           Microurl.pl
-        </Link>{' '}
+        </Link>
         &copy; 2023
       </h1>
     </footer>

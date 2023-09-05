@@ -47,7 +47,6 @@ export default async function page () {
         console.error(error)
       })
       .finally(() => {
-        console.log('Pomyślnie dodano url!')
         redirect('/dashboard/links')
         // toast.success('Pomyślnie dodano url!')
       })

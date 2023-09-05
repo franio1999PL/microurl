@@ -12,15 +12,18 @@ export default function Home () {
           </h1>
         </div>
         <h2 className='p-4 text-center text-xl font-medium'>
-          ✔ Możliwość skracania linków
+          <span className='text-emerald-500 text-xl'>✔</span> Możliwość
+          skracania linków
         </h2>
         <Separator orientation='horizontal' className='' />
         <h4 className='p-4 text-center text-xl font-medium'>
-          ✔ Analityka linków możesz śledzić ilość wejść w twój link
+          <span className='text-emerald-500 text-xl'>✔</span> Analityka linków
+          możesz śledzić ilość wejść w twój link
         </h4>
         <Separator orientation='horizontal' className='' />
         <h5 className='p-4 text-center text-xl font-medium'>
-          ✔ Możliwość podłączenia swojej aplikacji za pomocą API.
+          <span className='text-emerald-500 text-xl'>✔</span> Możliwość
+          podłączenia swojej aplikacji za pomocą API.
         </h5>
       </section>
       <section className='w-full mt-16' id='cena'>

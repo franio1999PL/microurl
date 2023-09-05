@@ -2,9 +2,6 @@ import Footer from '@/components/Footer'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
-import ogImageSm from '@/images/og-image-sm.png'
-import ogImageLg from '@/images/ig-image-lg.png'
-import Image from 'next/image'
 
 const poppins = Poppins({
   subsets: ['latin'],

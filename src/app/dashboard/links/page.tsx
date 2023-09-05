@@ -12,13 +12,6 @@ import {
   TableRow
 } from '@/components/ui/table'
 
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger
-} from '@/components/ui/tooltip'
-
 import { PrismaClient } from '@prisma/client'
 
 import RemoveButton from '@/components/RemoveButton'

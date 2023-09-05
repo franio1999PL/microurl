@@ -5,7 +5,6 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 export const handleRemove = async (linkId: any) => {
-    console.log(linkId.toString())
     const removeLink = await prisma.shortUrl
         .delete({
             where: {

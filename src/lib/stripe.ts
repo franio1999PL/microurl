@@ -71,7 +71,7 @@ export async function createCustomerIfNull() {
                 },
                 data: {
                     stripe_customer_id: customer.id,
-                    api_key: "apikey_" + randomUUID()
+                    api_key: "secret_" + randomUUID()
                 }
             })
         }

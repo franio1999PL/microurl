@@ -54,15 +54,13 @@ export default async function page () {
 
   return (
     <main className='max-w-5xl min-h-[90vh] flex flex-col items-center justify-center gap-4'>
-      <h1 className='text-2xl uppercase'>Skrócanie URL</h1>
+      <h1 className='text-2xl uppercase'>Skróć URL</h1>
       <div className='w-full'>
         <form
           action={handleSubmit}
           className='flex flex-col items-center w-full gap-3'
         >
-          <label className='w-1/3 text-center px-4 py-6'>
-            Wpisz URL do skrócenia:
-          </label>
+          <label className='w-1/3 text-center px-4 py-6'>Wpisz URL:</label>
           <input
             type='url'
             name='url'

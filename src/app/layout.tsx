@@ -11,7 +11,16 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: 'Skracanie Linków | MICROURL.PL',
   description:
-    'Możliwość, analizowania ruchu na twoich social mediach oraz tworzenie skróconych url.'
+    'Możliwość, analizowania ruchu na twoich social mediach oraz tworzenie skróconych url.',
+  openGraph: {
+    title: 'Skracanie Linków | MICROURL.PL',
+    description:
+      'Możliwość, analizowania ruchu na twoich social mediach oraz tworzenie skróconych url.',
+    url: String(process.env.MAIN_URL),
+    siteName: 'MICROURL',
+    locale: 'pl_PL',
+    type: 'website'
+  }
 }
 
 export default function RootLayout ({

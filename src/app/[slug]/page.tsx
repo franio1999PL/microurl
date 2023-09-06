@@ -39,7 +39,7 @@ export default async function page ({ params }: Props) {
   return (
     <div>
       <div>My Post: {params.slug}</div>
-      <div>City: {city ? String(city) : ''}</div>
+      <div>City: {city ? JSON.parse(city) : ''}</div>
     </div>
   )
 }

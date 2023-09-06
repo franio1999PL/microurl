@@ -32,9 +32,9 @@ export default async function page ({ params }: Props) {
     redirect(link.longUrl)
   }
 
-  const city = await fetch('/api/endpoint', {
+  const city = await fetch(`${process.env.MAIN_URL}/api/endpoint`, {
     method: 'GET'
-  })
+  }).then(res => res.json())
 
   return (
     <div>

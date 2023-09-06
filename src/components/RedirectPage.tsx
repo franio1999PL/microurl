@@ -1,5 +1,5 @@
 'use client'
-import { useGetLink } from '@/lib/useGetLink'
+import { getLink } from '@/lib/getLink'
 
 type Props = {
   slug: string
@@ -7,7 +7,7 @@ type Props = {
 
 const RedirectPage: React.FC<Props> = ({ slug }: Props) => {
   const redirect = (slug: string) => {
-    useGetLink(slug)
+    getLink(slug)
   }
   return (
     <button

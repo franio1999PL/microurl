@@ -1,7 +1,7 @@
 "use client"
 
 
-export const useGetLink = async (slug: string) => {
+export const getLink = async (slug: string) => {
     await fetch(`https://microurl.pl/api/endpoint?slug=${slug}`, {
         method: 'GET'
     })

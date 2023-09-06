@@ -32,5 +32,14 @@ export default async function page ({ params }: Props) {
     redirect(link.longUrl)
   }
 
-  return <div>My Post: {params.slug}</div>
+  const city = await fetch('/api/endpoint', {
+    method: 'GET'
+  })
+
+  return (
+    <div>
+      <div>My Post: {params.slug}</div>
+      <div>City: {city ? String(city) : ''}</div>
+    </div>
+  )
 }

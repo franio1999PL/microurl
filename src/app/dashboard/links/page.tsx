@@ -12,28 +12,31 @@ import {
   TableRow
 } from '@/components/ui/table'
 
-import { PrismaClient } from '@prisma/client'
+import prisma from '@/lib/db'
 
 import RemoveButton from '@/components/RemoveButton'
 import CopyUrl from '@/components/CopyUrl'
-const prisma = new PrismaClient()
 
 export default async function page () {
   const session = await getServerSession(authOptions)
 
-  const user = await prisma.user.findFirst({
-    where: {
-      email: String(session?.user?.email)
-    }
-  })
+  const user = await prisma.user
+    .findFirst({
+      where: {
+        email: String(session?.user?.email)
+      }
+    })
+    .finally(() => prisma.$disconnect())
 
   const userId = user?.id
 
-  const links = await prisma.shortUrl.findMany({
-    where: {
-      userId: String(userId)
-    }
-  })
+  const links = await prisma.shortUrl
+    .findMany({
+      where: {
+        userId: String(userId)
+      }
+    })
+    .finally(() => prisma.$disconnect())
 
   return (
     <main className='flex flex-col items-center w-full'>

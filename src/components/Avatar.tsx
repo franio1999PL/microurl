@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Toaster } from 'react-hot-toast'
+import { signOut } from 'next-auth/react'
 
 export default function Avatar ({
   imageUrl,
@@ -49,20 +49,22 @@ export default function Avatar ({
               >
                 Dashboard
               </Link>
-              <Link
-                href={'/api/auth/signout'}
+
+              <button
                 className='font-medium text-sm text-white text-center bg-red-500 px-4 py-2 rounded-lg hover:opacity-80'
-                onClick={() => setOpenMenu(false)}
+                onClick={() => {
+                  setOpenMenu(false)
+                  signOut({ redirect: true, callbackUrl: '/' })
+                }}
               >
                 Wyloguj
-              </Link>
+              </button>
             </div>
           </>
         ) : (
           <></>
         )}
       </>
-      {/* <Toaster position='bottom-center' reverseOrder={false} /> */}
     </>
   )
 }

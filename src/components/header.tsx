@@ -3,6 +3,7 @@ import { getServerSession } from 'next-auth/next'
 import Link from 'next/link'
 import Avatar from './Avatar'
 import { Button } from './ui/button'
+import LoginButton from './LoginButton'
 
 export default async function Header () {
   const session = await getServerSession(authOptions)
@@ -35,9 +36,7 @@ export default async function Header () {
               accountName={String(session?.user?.name)}
             />
           ) : (
-            <Link href={'/dashboard'}>
-              <Button>Zaloguj</Button>
-            </Link>
+            <LoginButton />
           )}
         </div>
       </div>

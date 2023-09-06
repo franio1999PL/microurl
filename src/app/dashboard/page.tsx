@@ -5,9 +5,8 @@ import {
 } from '@/lib/stripe'
 import getServerSession from 'next-auth'
 import Link from 'next/link'
-import { PrismaClient } from '@prisma/client'
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
-const prisma = new PrismaClient()
+import prisma from '@/lib/db'
 
 export default async function page () {
   const session = await getServerSession(authOptions)
@@ -16,11 +15,13 @@ export default async function page () {
   const hasSub = await hasSubscription()
   const checkoutLink = await createCheckoutLink(String(customer))
 
-  const user = await prisma.user.findFirst({
-    where: {
-      email: session?.user?.email
-    }
-  })
+  const user = await prisma.user
+    .findFirst({
+      where: {
+        email: session?.user?.email
+      }
+    })
+    .finally(() => prisma.$disconnect())
 
   return (
     <main>

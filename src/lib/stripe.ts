@@ -2,9 +2,9 @@ import { authOptions } from '@/pages/api/auth/[...nextauth]'
 import { getServerSession } from 'next-auth'
 import Stripe from 'stripe'
 
-import { PrismaClient } from '@prisma/client'
+import prisma from './db'
 import { randomUUID } from 'crypto'
-const prisma = new PrismaClient()
+
 
 // price_1NmhW2IKLwmbNhSs1WW8P7yU
 
@@ -16,7 +16,7 @@ export async function hasSubscription() {
     const session = await getServerSession(authOptions)
 
     if (session) {
-        const user = await prisma.user.findFirst({ where: { email: session.user?.email } })
+        const user = await prisma.user.findFirst({ where: { email: session.user?.email } }).finally(() => prisma.$disconnect())
 
         const subscription = await stripe.subscriptions.list({
             customer: String(user?.stripe_customer_id)
@@ -47,7 +47,7 @@ export async function createCustomerIfNull() {
     const session = await getServerSession(authOptions)
 
     if (session) {
-        const user = await prisma.user.findFirst({ where: { email: session.user?.email } })
+        const user = await prisma.user.findFirst({ where: { email: session.user?.email } }).finally(() => prisma.$disconnect())
 
         if (!user?.api_key) {
             await prisma.user.update({
@@ -57,7 +57,7 @@ export async function createCustomerIfNull() {
                 data: {
                     api_key: "secret_" + randomUUID()
                 }
-            })
+            }).finally(() => prisma.$disconnect())
         }
 
         if (!user?.stripe_customer_id) {
@@ -73,10 +73,10 @@ export async function createCustomerIfNull() {
                     stripe_customer_id: customer.id,
                     api_key: "secret_" + randomUUID()
                 }
-            })
+            }).finally(() => prisma.$disconnect())
         }
 
-        const user2 = await prisma.user.findFirst({ where: { email: session.user?.email } })
+        const user2 = await prisma.user.findFirst({ where: { email: session.user?.email } }).finally(() => prisma.$disconnect())
         return user2?.stripe_customer_id
     }
 

@@ -1,8 +1,7 @@
 'use server'
 
 import { revalidatePath } from 'next/cache'
-import { PrismaClient } from '@prisma/client'
-const prisma = new PrismaClient()
+import prisma from '@/lib/db'
 
 export const handleRemove = async (linkId: any) => {
     const removeLink = await prisma.shortUrl
@@ -13,6 +12,7 @@ export const handleRemove = async (linkId: any) => {
         })
         .catch((error: any) => console.error(error))
         .finally(() => {
+            prisma.$disconnect()
             revalidatePath('/dashboard/links')
         })
 }

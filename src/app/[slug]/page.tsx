@@ -1,8 +1,7 @@
 import { redirect } from 'next/navigation'
 import { revalidatePath } from 'next/cache'
 
-import { PrismaClient } from '@prisma/client'
-const prisma = new PrismaClient()
+import prisma from '@/lib/db'
 
 type Props = {
   params: { slug: string }
@@ -11,11 +10,13 @@ type Props = {
 export default async function page ({ params }: Props) {
   const { slug } = params
 
-  const link = await prisma.shortUrl.findFirst({
-    where: {
-      slug
-    }
-  })
+  const link = await prisma.shortUrl
+    .findFirst({
+      where: {
+        slug
+      }
+    })
+    .finally(() => prisma.$disconnect())
 
   if (link !== null) {
     const addAnalytics = await prisma.shortUrl.update({
@@ -27,6 +28,7 @@ export default async function page ({ params }: Props) {
       }
     })
     revalidatePath('/dashboard/links')
+    prisma.$disconnect()
     redirect(link.longUrl)
   }
 

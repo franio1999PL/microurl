@@ -1,18 +1,18 @@
 // create short url
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
-import { PrismaClient } from '@prisma/client'
+
 import { getServerSession } from 'next-auth'
 import { customAlphabet } from 'nanoid'
 // import { toast } from 'react-hot-toast'
 import { redirect } from 'next/navigation'
-
-const prisma = new PrismaClient()
+import prisma from '@/lib/db'
 
 export default async function page () {
   const session = await getServerSession(authOptions)
 
   const handleSubmit = async (fromData: FormData) => {
     'use server'
+
     const longUrl = fromData.get('url')
 
     if (longUrl === '') {
@@ -21,11 +21,13 @@ export default async function page () {
       return
     }
 
-    const user = await prisma.user.findFirst({
-      where: {
-        email: String(session?.user?.email)
-      }
-    })
+    const user = await prisma.user
+      .findFirst({
+        where: {
+          email: String(session?.user?.email)
+        }
+      })
+      .finally(() => prisma.$disconnect())
 
     const characters =
       'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
@@ -47,6 +49,7 @@ export default async function page () {
         console.error(error)
       })
       .finally(() => {
+        prisma.$disconnect()
         redirect('/dashboard/links')
         // toast.success('Pomyślnie dodano url!')
       })

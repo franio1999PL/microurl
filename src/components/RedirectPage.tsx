@@ -5,7 +5,7 @@ type Props = {
   slug: string
 }
 
-export default function RedirectPage ({ slug }: Props) {
+const RedirectPage: React.FC<Props> = ({ slug }: Props) => {
   return (
     <button
       className='bg-black rounded-md text-white py-2 px-4'
@@ -15,3 +15,5 @@ export default function RedirectPage ({ slug }: Props) {
     </button>
   )
 }
+
+export default RedirectPage

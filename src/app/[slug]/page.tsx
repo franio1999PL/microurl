@@ -9,6 +9,7 @@ export default function page ({ params }: Props) {
   const { slug } = params
 
   useGetLink(slug)
+  console.log('test')
 
   return (
     <div>

@@ -1,28 +1,20 @@
 'use client'
-import { useEffect, useState } from 'react'
-import { useRouter } from 'next/navigation'
+
+import { useEffect } from 'react'
 
 type Props = {
   params: { slug: string }
 }
 
 export default function page ({ params }: Props) {
-  const [longUrl, setLongUrl] = useState('')
-  const router = useRouter()
-
   const { slug } = params
 
-  const redirect = (url: string) => {
-    router.push
-  }
-
-  const test = async () => {
+  const red = async () => {
     await fetch(`http://localhost:3000/api/endpoint?slug=${slug}`, {
       method: 'GET'
     })
       .then(res => res.json())
       .then(res => {
-        setLongUrl(res.longUrl)
         window.location.href = String(res.longUrl)
       })
       .catch(err => console.log(err))
@@ -31,11 +23,7 @@ export default function page ({ params }: Props) {
 
   useEffect(() => {
     const time = setTimeout(async () => {
-      await test()
-      console.log('chuj')
-
-      console.log('first')
-      redirect(longUrl)
+      await red()
     }, 1)
 
     return clearTimeout('time')

@@ -13,6 +13,7 @@ import {
   TableHeader,
   TableRow
 } from '@/components/ui/table'
+import ChartAnalytics from '@/components/ChartAnalytics'
 
 type Props = {
   params: { slug: string }
@@ -64,8 +65,13 @@ export default async function page ({ params }: Props) {
     return notFound()
   }
 
+  console.log(links)
+
   return (
     <div className='text-black'>
+      <div>
+        <ChartAnalytics links={links} />
+      </div>
       {links.length > 0 ? (
         <Table>
           <TableCaption>Lista twoich skróconych URL.</TableCaption>

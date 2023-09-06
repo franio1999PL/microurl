@@ -7,13 +7,12 @@ import {
   DialogTrigger
 } from '@/components/ui/dialog'
 import LoginDiscordButton from './LoginDiscordButton'
-import { Button } from './ui/button'
 
 export default function LoginModal () {
   return (
     <Dialog>
-      <DialogTrigger>
-        <Button>Zaloguj</Button>
+      <DialogTrigger className='bg-black text-slate-50 py-2 px-4 rounded-md hover:opacity-80'>
+        Zaloguj
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>

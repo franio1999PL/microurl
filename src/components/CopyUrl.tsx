@@ -8,9 +8,18 @@ import {
 
 type Props = {
   url: string
+  long?: boolean
 }
 
-export default function CopyUrl ({ url }: Props) {
+export default function CopyUrl ({ url, long }: Props) {
+  function shortString (text: string, maksymalnaDlugosc: number) {
+    if (text.length <= maksymalnaDlugosc) {
+      return text
+    } else {
+      return text.slice(0, maksymalnaDlugosc) + '...'
+    }
+  }
+
   const copyToClipboard = () => {
     navigator.clipboard
       .writeText(url)
@@ -27,7 +36,7 @@ export default function CopyUrl ({ url }: Props) {
     <TooltipProvider>
       <Tooltip>
         <TooltipTrigger onClick={copyToClipboard}>
-          Kliknij aby skopiować
+          {long ? shortString(url, 32) : 'Kliknij aby skopiować'}
         </TooltipTrigger>
         <TooltipContent>
           <p>{url}</p>

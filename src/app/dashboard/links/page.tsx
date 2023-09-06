@@ -34,6 +34,9 @@ export default async function page () {
     .findMany({
       where: {
         userId: String(userId)
+      },
+      orderBy: {
+        clicks: 'desc'
       }
     })
     .finally(() => prisma.$disconnect())
@@ -48,9 +51,9 @@ export default async function page () {
             <TableHeader>
               <TableRow>
                 <TableHead className='w-[100px]'>#</TableHead>
-                <TableHead>Długie Url</TableHead>
-                <TableHead>Skrócone Url</TableHead>
-                <TableHead>Ilość Wejść</TableHead>
+                <TableHead className='text-center'>Długie Url</TableHead>
+                <TableHead className='text-center'>Skrócone Url</TableHead>
+                <TableHead className='text-center'>Ilość Wejść</TableHead>
                 <TableHead className='text-right'>#</TableHead>
               </TableRow>
             </TableHeader>
@@ -60,12 +63,16 @@ export default async function page () {
                   <TableRow key={link.id}>
                     <TableCell className='font-medium'>{index + 1}</TableCell>
                     <TableCell>
-                      <CopyUrl url={link.longUrl} />
+                      <CopyUrl long={true} url={link.longUrl} />
                     </TableCell>
-                    <TableCell>
+                    <TableCell className='text-center'>
                       <CopyUrl url={`${process.env.MAIN_URL}/${link.slug}`} />
                     </TableCell>
-                    <TableCell>{link.clicks}</TableCell>
+                    <TableCell className='text-center'>
+                      <span className='px-2 py-1 rounded-full bg-black w-full text-slate-50'>
+                        {link.clicks}
+                      </span>
+                    </TableCell>
                     <TableCell className='text-right'>
                       <RemoveButton linkId={link.id} />
                     </TableCell>

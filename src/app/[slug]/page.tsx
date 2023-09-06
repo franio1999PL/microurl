@@ -1,6 +1,5 @@
 'use client'
-
-import { useEffect } from 'react'
+import { getLink } from '@/lib/getLink'
 
 type Props = {
   params: { slug: string }
@@ -9,30 +8,12 @@ type Props = {
 export default function page ({ params }: Props) {
   const { slug } = params
 
-  const red = async () => {
-    await fetch(`http://localhost:3000/api/endpoint?slug=${slug}`, {
-      method: 'GET'
-    })
-      .then(res => res.json())
-      .then(res => {
-        window.location.href = String(res.longUrl)
-      })
-      .catch(err => console.log(err))
-    // .finally(() => (window.location.pathname = String(longUrl)))
-  }
-
-  useEffect(() => {
-    const time = setTimeout(async () => {
-      await red()
-    }, 1)
-
-    return clearTimeout('time')
-  }, [])
+  getLink(slug)
 
   return (
     <div>
       <div>My Post: {params.slug}</div>
-      <div>{longUrl}</div>
+      {/* <div>{longUrl}</div> */}
       {/* <div>City: {res ? res.city : ''}</div>
       <div>Country: {res ? res.country : ''}</div>
       <div>Country Region: {res ? res.countryRegion : ''}</div>

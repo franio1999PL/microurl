@@ -8,12 +8,12 @@ type Props = {
 export default function page ({ params }: Props) {
   const { slug } = params
 
-  useGetLink(slug)
   console.log('test')
 
   return (
     <div>
       <div>My Post: {params.slug}</div>
+      <button onLoad={() => useGetLink(slug)}></button>
       {/* <div>{longUrl}</div> */}
       {/* <div>City: {res ? res.city : ''}</div>
       <div>Country: {res ? res.country : ''}</div>

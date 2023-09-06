@@ -72,3 +72,11 @@ model ShortUrl {
   clicks    Int      @default(0)
   createdAt DateTime @default(now())
 }
+
+model LinkClicks {
+  id        String   @unique @default(uuid())
+  linkId    String
+  createdAt DateTime @default(now())
+  country   String?
+  city      String?
+}

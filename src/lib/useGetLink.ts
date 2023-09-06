@@ -2,7 +2,7 @@
 import { useEffect } from "react"
 
 
-export const getLink = (slug: string) => {
+export const useGetLink = (slug: string) => {
 
 
     const red = async () => {

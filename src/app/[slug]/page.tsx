@@ -1,5 +1,5 @@
 'use client'
-import { getLink } from '@/lib/getLink'
+import { useGetLink } from '@/lib/useGetLink'
 
 type Props = {
   params: { slug: string }
@@ -8,7 +8,7 @@ type Props = {
 export default function page ({ params }: Props) {
   const { slug } = params
 
-  getLink(slug)
+  useGetLink(slug)
 
   return (
     <div>

@@ -1,5 +1,6 @@
 'use client'
 import { useGetLink } from '@/lib/useGetLink'
+import Script from 'next/script'
 
 type Props = {
   params: { slug: string }
@@ -8,17 +9,14 @@ type Props = {
 export default function page ({ params }: Props) {
   const { slug } = params
 
-  console.log('test')
-
   return (
-    <div>
-      <div>My Post: {params.slug}</div>
+    <main className='min-w-5xl '>
       <button onClick={() => useGetLink(slug)}>Redirect</button>
-      {/* <div>{longUrl}</div> */}
-      {/* <div>City: {res ? res.city : ''}</div>
-      <div>Country: {res ? res.country : ''}</div>
-      <div>Country Region: {res ? res.countryRegion : ''}</div>
-      <div>region: {res ? res.region : ''}</div> */}
-    </div>
+      <Script
+        async
+        src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6632073480694542'
+        crossOrigin='anonymous'
+      />
+    </main>
   )
 }

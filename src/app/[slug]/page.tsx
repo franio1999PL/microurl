@@ -40,6 +40,9 @@ export default async function page ({ params }: Props) {
     <div>
       <div>My Post: {params.slug}</div>
       <div>City: {res ? res.city : ''}</div>
+      <div>Country: {res ? res.country : ''}</div>
+      <div>Country Region: {res ? res.countryRegion : ''}</div>
+      <div>region: {res ? res.region : ''}</div>
     </div>
   )
 }

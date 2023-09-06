@@ -43,7 +43,7 @@ export async function GET(req: Request) {
             data: {
                 linkId: link.id,
                 country: country,
-                city: city
+                city: decodeURIComponent(String(city))
             }
         }).finally(() => {
             // add revalidate path

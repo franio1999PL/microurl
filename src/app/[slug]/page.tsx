@@ -1,23 +1,29 @@
-'use client'
-import { useGetLink } from '@/lib/useGetLink'
+import RedirectPage from '@/components/RedirectPage'
+import prisma from '@/lib/db'
+import { notFound } from 'next/navigation'
 import Script from 'next/script'
 
 type Props = {
   params: { slug: string }
 }
 
-export default function page ({ params }: Props) {
+export default async function page ({ params }: Props) {
   const { slug } = params
+
+  const SlugExist = await prisma.shortUrl.findFirst({
+    where: {
+      slug
+    }
+  })
+
+  if (!SlugExist) {
+    return notFound()
+  }
 
   return (
     <main className='min-w-5xl min-h-[80vh]'>
       <div className='w-full h-full flex items-center justify-center '>
-        <button
-          className='bg-black rounded-md text-white py-2 px-4'
-          onClick={() => useGetLink(slug)}
-        >
-          Przejdź do strony
-        </button>
+        <RedirectPage slug={slug} />
       </div>
       <Script
         async

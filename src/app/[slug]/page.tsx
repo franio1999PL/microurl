@@ -13,7 +13,7 @@ export default function page ({ params }: Props) {
   return (
     <div>
       <div>My Post: {params.slug}</div>
-      <button onLoad={() => useGetLink(slug)}>xd</button>
+      <button onClick={() => useGetLink(slug)}>Redirect</button>
       {/* <div>{longUrl}</div> */}
       {/* <div>City: {res ? res.city : ''}</div>
       <div>Country: {res ? res.country : ''}</div>

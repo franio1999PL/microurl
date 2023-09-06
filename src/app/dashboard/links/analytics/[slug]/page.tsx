@@ -99,7 +99,9 @@ export default async function page ({ params }: Props) {
                   <TableCell className='text-center'>{link.city}</TableCell>
                   <TableCell className='text-center'>
                     <span className='px-2 py-1 rounded-full bg-black w-full text-slate-50'>
-                      {link.createdAt.toLocaleString()}
+                      {link.createdAt.toLocaleString('pl-PL', {
+                        timeZone: 'Europe/Warsaw'
+                      })}
                     </span>
                   </TableCell>
                 </TableRow>

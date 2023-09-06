@@ -11,9 +11,9 @@ export default function page ({ params }: Props) {
 
   return (
     <main className='min-w-5xl min-h-[80vh]'>
-      <div className='w-full items-center justify-center '>
+      <div className='w-full h-full items-center justify-center '>
         <button
-          className='bg-black rounded-md py-2 px-4'
+          className='bg-black rounded-md text-white py-2 px-4'
           onClick={() => useGetLink(slug)}
         >
           Przejdź do strony

@@ -105,7 +105,7 @@ export default function ChartAnalytics ({ links }: Props) {
           data={dataXD}
         >
           <CartesianGrid strokeDasharray='3 3' />
-          <XAxis dataKey='date' />
+          <XAxis reversed dataKey='date' />
           <YAxis />
           <Tooltip />
           <Legend />

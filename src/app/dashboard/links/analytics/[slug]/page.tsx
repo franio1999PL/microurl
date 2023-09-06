@@ -58,6 +58,9 @@ export default async function page ({ params }: Props) {
     .findMany({
       where: {
         linkId: checkSlugExist.id
+      },
+      orderBy: {
+        createdAt: 'desc'
       }
     })
     .finally(() => prisma.$disconnect())
@@ -65,7 +68,7 @@ export default async function page ({ params }: Props) {
     return notFound()
   }
 
-  console.log(links)
+  //   console.log(links)
 
   return (
     <div className='text-black'>

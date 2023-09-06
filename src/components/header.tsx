@@ -2,8 +2,8 @@ import { authOptions } from '@/pages/api/auth/[...nextauth]'
 import { getServerSession } from 'next-auth/next'
 import Link from 'next/link'
 import Avatar from './Avatar'
-import { Button } from './ui/button'
-import LoginButton from './LoginButton'
+
+import LoginModal from './LoginModal'
 
 export default async function Header () {
   const session = await getServerSession(authOptions)
@@ -36,7 +36,7 @@ export default async function Header () {
               accountName={String(session?.user?.name)}
             />
           ) : (
-            <LoginButton />
+            <LoginModal />
           )}
         </div>
       </div>

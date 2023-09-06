@@ -32,14 +32,14 @@ export default async function page ({ params }: Props) {
     redirect(link.longUrl)
   }
 
-  const city = await fetch(`${process.env.MAIN_URL}/api/endpoint`, {
+  const res = await fetch(`${process.env.MAIN_URL}/api/endpoint`, {
     method: 'GET'
   }).then(res => res.json())
 
   return (
     <div>
       <div>My Post: {params.slug}</div>
-      <div>City: {city ? JSON.parse(city) : ''}</div>
+      <div>City: {res ? res.city : ''}</div>
     </div>
   )
 }

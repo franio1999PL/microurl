@@ -69,9 +69,12 @@ export default async function page () {
                       <CopyUrl url={`${process.env.MAIN_URL}/${link.slug}`} />
                     </TableCell>
                     <TableCell className='text-center'>
-                      <span className='px-2 py-1 rounded-full bg-black w-full text-slate-50'>
+                      <Link
+                        href={`${process.env.MAIN_URL}/dashboard/links/analytics/${link.slug}`}
+                        className='px-2 py-1 rounded-full bg-black w-full text-slate-50'
+                      >
                         {link.clicks}
-                      </span>
+                      </Link>
                     </TableCell>
                     <TableCell className='text-right'>
                       <RemoveButton linkId={link.id} />

@@ -1,17 +1,6 @@
 'use client'
 
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-  BarChart,
-  Bar
-} from 'recharts'
+import { XAxis, YAxis, ResponsiveContainer, BarChart, Bar } from 'recharts'
 
 type Props = {
   links: {

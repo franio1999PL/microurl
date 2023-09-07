@@ -14,6 +14,8 @@ import {
   TableRow
 } from '@/components/ui/table'
 import ChartAnalytics from '@/components/ChartAnalytics'
+import Header from '@/components/header'
+import Footer from '@/components/Footer'
 
 type Props = {
   params: { slug: string }
@@ -71,78 +73,82 @@ export default async function page ({ params }: Props) {
   //   console.log(links)
 
   return (
-    <div className='text-black'>
-      <div>
-        <ChartAnalytics links={links} />
-      </div>
-      {links.length > 0 ? (
-        <Table>
-          <TableCaption>Lista twoich skróconych URL.</TableCaption>
-          <TableHeader>
-            <TableRow>
-              <TableHead className='w-[100px]'>#</TableHead>
-              <TableHead className='text-center'>Kraj</TableHead>
-              <TableHead className='text-center'>Miasto</TableHead>
-              <TableHead className='text-center'>Data wejścia</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {links.length > 0 ? (
-              links.map((link, index) => (
-                <TableRow key={link.id}>
-                  <TableCell className='font-medium'>{index + 1}</TableCell>
-                  <TableCell className='text-center'>
-                    <ReactCountryFlag
-                      countryCode={String(link.country)}
-                      svg
-                      cdnUrl='https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/flags/1x1/'
-                      cdnSuffix='svg'
-                      style={{
-                        width: '2em',
-                        height: '2em'
-                      }}
-                      title={String(link.country)}
-                      className='rounded-sm border border-slate-50 bg-slate-50'
-                    />
-                  </TableCell>
-                  <TableCell className='text-center'>{link.city}</TableCell>
-                  <TableCell className='text-center'>
-                    <span className='px-2 py-1 rounded-full bg-black w-full text-slate-50'>
-                      {link.createdAt.toLocaleString('pl-PL', {
-                        timeZone: 'Europe/Warsaw'
-                      })}
-                    </span>
-                  </TableCell>
-                </TableRow>
-              ))
-            ) : (
-              <>
-                <div className='w-full text-center'>
-                  <h1 className='font-medium text-center text-red-500'>
-                    Brak Danych
-                  </h1>
-                  <h1 className='font-medium text-center text-red-500'>
-                    Brak Danych
-                  </h1>
-                  <h1 className='font-medium text-center text-red-500'>
-                    Brak Danych
-                  </h1>
-                  <h1 className='font-medium text-center text-red-500'>
-                    Brak Danych
-                  </h1>
-                </div>
-              </>
-            )}
-          </TableBody>
-        </Table>
-      ) : (
-        <div className='flex flex-col items-center justify-center gap-4'>
-          <h1 className='font-bold text-center text-red-500 uppercase'>
-            Brak Danych
-          </h1>
+    <>
+      <Header />
+      <div className='text-black'>
+        <div>
+          <ChartAnalytics links={links} />
         </div>
-      )}
-    </div>
+        {links.length > 0 ? (
+          <Table>
+            <TableCaption>Lista twoich skróconych URL.</TableCaption>
+            <TableHeader>
+              <TableRow>
+                <TableHead className='w-[100px]'>#</TableHead>
+                <TableHead className='text-center'>Kraj</TableHead>
+                <TableHead className='text-center'>Miasto</TableHead>
+                <TableHead className='text-center'>Data wejścia</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {links.length > 0 ? (
+                links.map((link, index) => (
+                  <TableRow key={link.id}>
+                    <TableCell className='font-medium'>{index + 1}</TableCell>
+                    <TableCell className='text-center'>
+                      <ReactCountryFlag
+                        countryCode={String(link.country)}
+                        svg
+                        cdnUrl='https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/flags/1x1/'
+                        cdnSuffix='svg'
+                        style={{
+                          width: '2em',
+                          height: '2em'
+                        }}
+                        title={String(link.country)}
+                        className='rounded-sm border border-slate-50 bg-slate-50'
+                      />
+                    </TableCell>
+                    <TableCell className='text-center'>{link.city}</TableCell>
+                    <TableCell className='text-center'>
+                      <span className='px-2 py-1 rounded-full bg-black w-full text-slate-50'>
+                        {link.createdAt.toLocaleString('pl-PL', {
+                          timeZone: 'Europe/Warsaw'
+                        })}
+                      </span>
+                    </TableCell>
+                  </TableRow>
+                ))
+              ) : (
+                <>
+                  <div className='w-full text-center'>
+                    <h1 className='font-medium text-center text-red-500'>
+                      Brak Danych
+                    </h1>
+                    <h1 className='font-medium text-center text-red-500'>
+                      Brak Danych
+                    </h1>
+                    <h1 className='font-medium text-center text-red-500'>
+                      Brak Danych
+                    </h1>
+                    <h1 className='font-medium text-center text-red-500'>
+                      Brak Danych
+                    </h1>
+                  </div>
+                </>
+              )}
+            </TableBody>
+          </Table>
+        ) : (
+          <div className='flex flex-col items-center justify-center gap-4'>
+            <h1 className='font-bold text-center text-red-500 uppercase'>
+              Brak Danych
+            </h1>
+          </div>
+        )}
+      </div>
+      <Footer />
+    </>
   )
 
   //   console.log(checkSlugExist)

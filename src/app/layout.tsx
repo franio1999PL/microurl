@@ -1,4 +1,3 @@
-import Footer from '@/components/Footer'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
@@ -55,10 +54,7 @@ export default function RootLayout ({
           gtag('config', 'G-LFPK4SN5D3');
         `}
       </Script>
-      <body className={poppins.className}>
-        {children}
-        <Footer />
-      </body>
+      <body className={poppins.className}>{children}</body>
     </html>
   )
 }

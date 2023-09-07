@@ -19,13 +19,13 @@ export default async function Header () {
         <div className='flex items-center gap-4'>
           <Link
             href={'/#cena'}
-            className='font-medium text-sm text-black hover:opacity-80 sm:hidden'
+            className='font-medium text-sm text-black hover:opacity-80 lg:hidden'
           >
             Cena
           </Link>
           <Link
             href={'/#funkcje'}
-            className='font-medium text-sm text-black hover:opacity-80 sm:hidden'
+            className='font-medium text-sm text-black hover:opacity-80 lg:hidden'
           >
             Funkcje Aplikacji
           </Link>

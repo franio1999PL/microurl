@@ -81,7 +81,7 @@ export default async function page ({ params }: Props) {
         </div>
         {links.length > 0 ? (
           <Table>
-            <TableCaption>Lista twoich skróconych URL.</TableCaption>
+            <TableCaption>Lista 10 najnowszych zdarzeń.</TableCaption>
             <TableHeader>
               <TableRow>
                 <TableHead className='w-[100px]'>#</TableHead>
@@ -92,7 +92,7 @@ export default async function page ({ params }: Props) {
             </TableHeader>
             <TableBody>
               {links.length > 0 ? (
-                links.map((link, index) => (
+                links.slice(0, 10).map((link, index) => (
                   <TableRow key={link.id}>
                     <TableCell className='font-medium'>{index + 1}</TableCell>
                     <TableCell className='text-center'>
@@ -150,7 +150,4 @@ export default async function page ({ params }: Props) {
       <Footer />
     </>
   )
-
-  //   console.log(checkSlugExist)
-  //   console.log(getUser)
 }

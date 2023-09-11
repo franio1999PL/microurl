@@ -1,15 +1,23 @@
 "use client"
 
 
+
 export const getLink = async (slug: string) => {
-    await fetch(`https://microurl.pl/api/endpoint?slug=${slug}`, {
-        method: 'GET'
-    })
-        .then(res => res.json())
-        .then(res => {
-            window.location.href = String(res.longUrl)
-        })
-        .catch(err => console.log(err))
-    // .finally(() => (window.location.pathname = String(longUrl)))
+    try {
+        const res = await fetch(`http://localhost:3000/api/endpoint?slug=${slug}`, {
+            method: 'GET'
+        });
+
+        if (!res.ok) {
+            throw new Error(`Request failed with status: ${res.status}`);
+        }
+
+        const data = await res.json();
+        console.log(data);
+        return data;
+    } catch (err) {
+        console.error(err);
+        throw err; // Przekaż błąd dalej, aby można było go obsłużyć na wyższym poziomie
+    }
 }
 

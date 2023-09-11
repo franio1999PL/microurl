@@ -4,7 +4,7 @@
 
 export const getLink = async (slug: string) => {
     try {
-        const res = await fetch(`http://localhost:3000/api/endpoint?slug=${slug}`, {
+        const res = await fetch(`https://microurl.pl/api/endpoint?slug=${slug}`, {
             method: 'GET'
         });
 

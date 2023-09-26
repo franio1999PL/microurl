@@ -18,17 +18,20 @@ const RedirectPage: React.FC<Props> = ({ slug }: Props) => {
     // router.push(String(link))
   }
 
-  setTimeout(() => {
-    redirect(slug)
-  }, 1000)
-
   return (
-    <button
-      className='bg-black rounded-md text-white py-2 px-4'
-      onClick={() => redirect(slug)}
-    >
-      Za chwile zostaniesz przekierowany
-    </button>
+    <div>
+      <h1>Za 5 sekund zostaniesz przekierowany</h1>
+
+      {/* {setTimeout(() => {
+        redirect(slug)
+      }, 1000)} */}
+      <button
+        className='bg-black rounded-md text-white py-2 px-4'
+        onClick={() => redirect(slug)}
+      >
+        Za chwile zostaniesz przekierowany
+      </button>
+    </div>
   )
 }
 

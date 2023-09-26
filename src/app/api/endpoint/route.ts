@@ -15,6 +15,13 @@ export async function GET(req: Request) {
             error: {
                 message: 'Slug jest wymagany!'
             }
+        }, {
+            status: 200,
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+            },
         })
     }
 
@@ -54,6 +61,13 @@ export async function GET(req: Request) {
 
         return res.json({
             longUrl: link.longUrl,
+        }, {
+            status: 200,
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+            },
         })
     }
 
@@ -62,6 +76,13 @@ export async function GET(req: Request) {
             error: {
                 message: 'Nie ma takiego linku!'
             }
+        }, {
+            status: 200,
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+                'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+            },
         })
     }
 

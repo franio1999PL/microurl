@@ -70,7 +70,9 @@ export default async function page () {
                         <CopyUrl long={true} url={link.longUrl} />
                       </TableCell>
                       <TableCell className='text-center'>
-                        <CopyUrl url={`${process.env.MAIN_URL}/${link.slug}`} />
+                        <CopyUrl
+                          url={`https://redirect.microurl.pl/${link.slug}`}
+                        />
                       </TableCell>
                       <TableCell className='text-center'>
                         <Link
